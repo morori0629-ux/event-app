@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#4f46e5">
+  <title>イベント編集</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="header">
+    <a id="back-link" href="/" class="back-btn">← 戻る</a>
+    <h1 class="header-title">イベントを編集</h1>
+  </header>
+
+  <main class="container">
+    <!-- ローディング -->
+    <div id="loading" class="loading"></div>
+
+    <!-- 編集フォーム -->
+    <div id="form-section" class="hidden">
+      <div class="form-card">
+
+        <div class="form-group">
+          <label class="label">タイトル<span class="required">*</span></label>
+          <input type="text" id="f-title" class="input" placeholder="例：6月BBQ大会">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label class="label">開催日<span class="required">*</span></label>
+            <input type="date" id="f-date" class="input">
+          </div>
+          <div class="form-group flex-1">
+            <label class="label">開催時間</label>
+            <input type="time" id="f-time" class="input">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="label">場所</label>
+          <input type="text" id="f-location" class="input" placeholder="例：渋谷公園">
+        </div>
+
+        <div class="form-group">
+          <label class="label">説明</label>
+          <textarea id="f-description" class="textarea" rows="4"
+            placeholder="イベントの詳細、持ち物、注意事項など"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="label">申込期限<span class="required">*</span></label>
+          <input type="datetime-local" id="f-deadline" class="input">
+        </div>
+
+        <div class="form-group">
+          <label class="label">幹事名<span class="required">*</span></label>
+          <input type="text" id="f-organizer-name" class="input" placeholder="例：田中 花子">
+        </div>
+
+        <div class="form-group">
+          <label class="label">幹事メールアドレス<span class="required">*</span></label>
+          <input type="email" id="f-organizer-email" class="input" placeholder="hanako@example.com">
+          <p class="input-hint">参加者が登録した際に通知が届きます</p>
+        </div>
+
+        <div class="form-group">
+          <label class="label">合言葉<span class="required">*</span></label>
+          <input type="password" id="f-passphrase" class="input" placeholder="イベント作成時に設定した合言葉">
+          <p class="input-hint">変更内容を保存するには合言葉が必要です</p>
+        </div>
+
+        <div id="form-error" class="error-msg hidden"></div>
+
+        <button id="submit-btn" class="btn btn-primary btn-block" onclick="submitEdit()">
+          変更を保存する
+        </button>
+        <button id="cancel-btn" class="btn btn-outline btn-block" onclick="history.back()">
+          キャンセル
+        </button>
+
+      </div>
+    </div>
+
+    <!-- 完了メッセージ -->
+    <div id="done-section" class="hidden">
+      <div class="cancel-page">
+        <div class="cancel-icon">✅</div>
+        <h2 class="cancel-title">変更を保存しました</h2>
+        <p class="cancel-msg">イベント情報が更新されました。</p>
+        <button id="back-btn" class="btn btn-primary btn-block">
+          イベントページへ戻る
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="http.js"></script>
+  <script src="edit.js"></script>
+</body>
+</html>

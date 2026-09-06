@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#4f46e5">
+  <title>参加キャンセル</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="header">
+    <a href="/" class="back-btn">← トップ</a>
+    <h1 class="header-title">参加キャンセル</h1>
+  </header>
+
+  <main class="container">
+    <!-- ローディング -->
+    <div id="loading" class="loading"></div>
+
+    <!-- キャンセル確認 -->
+    <div id="confirm-section" class="hidden">
+      <div class="cancel-page">
+        <div class="cancel-icon">🗑️</div>
+        <h2 class="cancel-title">参加をキャンセルしますか？</h2>
+        <p class="cancel-msg" id="confirm-msg"></p>
+        <button id="cancel-btn" class="btn btn-danger btn-block" onclick="doCancel()">
+          キャンセルする
+        </button>
+        <button class="btn btn-outline btn-block" onclick="location.href='/'">
+          キャンセルしない
+        </button>
+      </div>
+    </div>
+
+    <!-- キャンセル完了 -->
+    <div id="done-section" class="hidden">
+      <div class="cancel-page">
+        <div class="cancel-icon">✅</div>
+        <h2 class="cancel-title">キャンセルしました</h2>
+        <p class="cancel-msg" id="done-msg"></p>
+        <button class="btn btn-primary btn-block" onclick="location.href='/'">
+          イベント一覧へ戻る
+        </button>
+      </div>
+    </div>
+
+    <!-- エラー -->
+    <div id="error-section" class="hidden">
+      <div class="cancel-page">
+        <div class="cancel-icon">❌</div>
+        <h2 class="cancel-title">エラー</h2>
+        <p class="cancel-msg" id="error-msg-text"></p>
+        <button class="btn btn-outline btn-block" onclick="location.href='/'">
+          トップへ戻る
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script src="http.js"></script>
+  <script src="cancel.js"></script>
+</body>
+</html>

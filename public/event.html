@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#4f46e5">
+  <title>イベント詳細</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="header">
+    <a href="/" class="back-btn">← 戻る</a>
+    <h1 class="header-title" id="header-title">読み込み中...</h1>
+  </header>
+
+  <main class="container">
+    <!-- ローディング -->
+    <div id="loading" class="loading"></div>
+
+    <!-- イベント本体 -->
+    <div id="event-content" class="hidden">
+
+      <!-- イベント詳細カード -->
+      <div class="detail-card">
+        <div class="detail-top">
+          <span id="deadline-badge" class="badge"></span>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">📅 開催日時</span>
+            <span id="ev-datetime" class="info-value">—</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">📍 場所</span>
+            <span id="ev-location" class="info-value">—</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">⏰ 申込期限</span>
+            <span id="ev-deadline" class="info-value">—</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">👤 幹事</span>
+            <span id="ev-organizer" class="info-value">—</span>
+          </div>
+        </div>
+
+        <div id="ev-description"></div>
+      </div>
+
+      <!-- 期限切れバナー -->
+      <div id="deadline-banner" class="deadline-banner hidden">
+        ⛔ 申込期限が過ぎているため、参加登録は受け付けていません
+      </div>
+
+      <!-- 参加登録ボタン -->
+      <div id="participate-section" class="hidden">
+        <button class="btn btn-primary btn-block" onclick="openParticipateModal()">
+          ✋ 参加登録する
+        </button>
+      </div>
+
+      <!-- タブ -->
+      <div class="tabs">
+        <button id="tab-btn-participants" class="tab active" onclick="switchTab('participants')">
+          参加者 <span id="participant-count" class="badge-count">0</span>
+        </button>
+        <button id="tab-btn-comments" class="tab" onclick="switchTab('comments')">
+          コメント <span id="comment-count" class="badge-count">0</span>
+        </button>
+      </div>
+
+      <!-- 参加者タブ -->
+      <div id="tab-participants" class="tab-content">
+        <ul id="participant-list" class="participant-list"></ul>
+      </div>
+
+      <!-- コメントタブ -->
+      <div id="tab-comments" class="tab-content hidden">
+        <div class="comment-form">
+          <input  type="text"     id="comment-author"  class="input"    placeholder="お名前">
+          <textarea               id="comment-content" class="textarea" placeholder="コメントを入力..." rows="3"></textarea>
+          <button class="btn btn-secondary btn-block" onclick="postComment()">投稿する</button>
+          <div id="comment-error" class="error-msg hidden"></div>
+        </div>
+        <ul id="comment-list" class="comment-list"></ul>
+      </div>
+
+      <!-- 編集・削除（幹事用） -->
+      <div class="delete-section">
+        <button class="delete-toggle" onclick="toggleEditForm()">
+          ✏️ このイベントを編集する（幹事用）
+        </button>
+        <div id="edit-form" class="delete-form hidden">
+          <div class="form-group">
+            <label class="label">合言葉を入力してください</label>
+            <input type="password" id="edit-passphrase" class="input" placeholder="合言葉">
+            <div id="edit-passphrase-error" class="error-msg hidden mt-8"></div>
+          </div>
+          <button class="btn btn-primary btn-block btn-sm" onclick="goToEdit()">
+            編集画面へ進む
+          </button>
+        </div>
+      </div>
+
+      <div class="delete-section">
+        <button class="delete-toggle" onclick="toggleDeleteForm()">
+          🗑 このイベントを削除する（幹事用）
+        </button>
+        <div id="delete-form" class="delete-form hidden">
+          <div class="form-group">
+            <label class="label">合言葉を入力してください</label>
+            <input type="password" id="delete-passphrase" class="input" placeholder="合言葉">
+            <div id="delete-error" class="error-msg hidden mt-8"></div>
+          </div>
+          <button class="btn btn-danger btn-block btn-sm" onclick="deleteEvent()">
+            完全に削除する
+          </button>
+        </div>
+      </div>
+
+    </div><!-- #event-content -->
+  </main>
+
+  <!-- ─── 参加登録 モーダル ─────────────────────────────── -->
+  <div id="modal-participate" class="modal hidden">
+    <div class="modal-overlay" onclick="closeModal('modal-participate')"></div>
+    <div class="modal-sheet">
+      <div class="modal-handle"></div>
+      <h2 class="modal-title">参加登録</h2>
+      <p id="modal-event-title" class="modal-subtitle"></p>
+
+      <div id="participate-error" class="error-msg hidden"></div>
+
+      <div class="form-group">
+        <label class="label">お名前<span class="required">*</span></label>
+        <input type="text" id="p-name" class="input" placeholder="山田 太郎">
+      </div>
+      <div class="form-group">
+        <label class="label">
+          メールアドレス<span class="optional">（任意）</span>
+        </label>
+        <input type="email" id="p-email" class="input" placeholder="you@example.com">
+        <p class="input-hint">入力するとキャンセルリンクがメールで届きます</p>
+      </div>
+
+      <button class="btn btn-primary btn-block" onclick="submitParticipation()">登録する</button>
+      <button class="btn btn-outline btn-block" onclick="closeModal('modal-participate')">閉じる</button>
+    </div>
+  </div>
+
+  <!-- ─── キャンセルリンク表示 モーダル ─────────────────── -->
+  <div id="modal-cancel-link" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-sheet">
+      <div class="modal-handle"></div>
+      <h2 class="modal-title">✅ 登録完了！</h2>
+      <p class="modal-text">
+        参加登録が完了しました。<br>
+        キャンセルするときは以下のリンクを使ってください。<br>
+        <strong>このリンクを必ず保存してください。</strong>
+      </p>
+      <div class="cancel-link-box">
+        <a id="cancel-link-url" href="#" target="_blank"></a>
+      </div>
+      <button class="btn btn-outline btn-block" onclick="copyCancelLink()">
+        📋 リンクをコピー
+      </button>
+      <button class="btn btn-primary btn-block" onclick="closeCancelLinkModal()">
+        閉じる
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="http.js"></script>
+  <script src="event.js"></script>
+</body>
+</html>

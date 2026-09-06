@@ -1,0 +1,70 @@
+{
+  "events": [
+    {
+      "id": "99a7e924-2be7-4969-90ff-9af67f1bf7f6",
+      "title": "長崎ミュージックマラソン",
+      "date": "2027-01-31",
+      "time": "07:00",
+      "location": "諫早駅",
+      "description": "ゴール後集合",
+      "deadline": "2026-12-31T16:16",
+      "passphrase_hash": "5d10b636144cb2e7a11b257ccb805cae8c263bbe180311010bbe76f063aae35f",
+      "organizer_name": "森永",
+      "organizer_email": "morori0629@gmail.com",
+      "created_at": "2026-09-06 16:18:06"
+    },
+    {
+      "id": "21e993f4-544c-4ff2-bf09-e1e203908c70",
+      "title": "横浜マラソン",
+      "date": "2026-10-25",
+      "time": "07:00",
+      "location": "みなとみらい",
+      "description": null,
+      "deadline": "2026-10-25T16:19",
+      "passphrase_hash": "5d10b636144cb2e7a11b257ccb805cae8c263bbe180311010bbe76f063aae35f",
+      "organizer_name": "森永竜輔",
+      "organizer_email": "morori0629@gmail.com",
+      "created_at": "2026-09-06 16:20:35"
+    },
+    {
+      "id": "f28d84c6-74ee-4a3d-9512-b7e47b32989b",
+      "title": "大田原マラソン",
+      "date": "2026-11-23",
+      "time": "06:00",
+      "location": "大田原",
+      "description": null,
+      "deadline": "2026-11-23T16:20",
+      "passphrase_hash": "5d10b636144cb2e7a11b257ccb805cae8c263bbe180311010bbe76f063aae35f",
+      "organizer_name": "森永竜輔",
+      "organizer_email": "morori0629@gmail.com",
+      "created_at": "2026-09-06 16:21:50"
+    }
+  ],
+  "participants": [
+    {
+      "id": "525f7252-1241-4872-aef7-4204e2fabaca",
+      "event_id": "99a7e924-2be7-4969-90ff-9af67f1bf7f6",
+      "name": "森永竜輔",
+      "email": null,
+      "cancel_token": "c7bc09b3-ef16-4c60-8d76-9162a7e07eda",
+      "registered_at": "2026-09-06 16:18:39"
+    },
+    {
+      "id": "52151385-52af-4c4e-aa30-dda4df27628a",
+      "event_id": "f28d84c6-74ee-4a3d-9512-b7e47b32989b",
+      "name": "森永竜輔",
+      "email": null,
+      "cancel_token": "0f2d0b25-992a-4d4b-bb87-045a8c2f4ca4",
+      "registered_at": "2026-09-06 16:22:11"
+    },
+    {
+      "id": "dd9b4300-d8c3-4f31-883c-be2518340170",
+      "event_id": "21e993f4-544c-4ff2-bf09-e1e203908c70",
+      "name": "森永竜輔",
+      "email": null,
+      "cancel_token": "4bf67211-acfc-482d-b15b-aad855b2b806",
+      "registered_at": "2026-09-06 16:22:27"
+    }
+  ],
+  "comments": []
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#4f46e5">
+  <title>イベント作成</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="header">
+    <a href="/" class="back-btn">← 戻る</a>
+    <h1 class="header-title">イベントを作成</h1>
+  </header>
+
+  <main class="container">
+    <div id="error-msg" class="error-msg hidden"></div>
+
+    <div class="form-card">
+
+      <!-- 基本情報 -->
+      <p class="form-section-title">基本情報</p>
+
+      <div class="form-group">
+        <label class="label">タイトル<span class="required">*</span></label>
+        <input type="text" id="title" class="input" placeholder="例：6月BBQ大会" maxlength="100">
+      </div>
+
+      <div class="form-group">
+        <label class="label">開催日<span class="required">*</span></label>
+        <input type="date" id="date" class="input">
+      </div>
+
+      <div class="form-group">
+        <label class="label">開催時間<span class="optional">（任意）</span></label>
+        <input type="time" id="time" class="input">
+      </div>
+
+      <div class="form-group">
+        <label class="label">場所<span class="optional">（任意）</span></label>
+        <input type="text" id="location" class="input" placeholder="例：渋谷区代々木公園">
+      </div>
+
+      <div class="form-group">
+        <label class="label">説明・詳細<span class="optional">（任意）</span></label>
+        <textarea id="description" class="textarea" placeholder="集合場所、持ち物など自由に入力できます"></textarea>
+      </div>
+
+      <!-- 申込設定 -->
+      <p class="form-section-title">申込設定</p>
+
+      <div class="form-group">
+        <label class="label">申込期限<span class="required">*</span></label>
+        <input type="datetime-local" id="deadline" class="input">
+        <p class="input-hint">この日時を過ぎると参加登録ができなくなります</p>
+      </div>
+
+      <!-- 幹事情報 -->
+      <p class="form-section-title">幹事情報</p>
+
+      <div class="form-group">
+        <label class="label">幹事名<span class="required">*</span></label>
+        <input type="text" id="organizer_name" class="input" placeholder="例：田中 花子">
+      </div>
+
+      <div class="form-group">
+        <label class="label">幹事メールアドレス<span class="required">*</span></label>
+        <input type="email" id="organizer_email" class="input" placeholder="organizer@example.com">
+        <p class="input-hint">参加者が登録したときに通知が届きます</p>
+      </div>
+
+      <!-- セキュリティ -->
+      <p class="form-section-title">セキュリティ</p>
+
+      <div class="form-group">
+        <label class="label">合言葉<span class="required">*</span></label>
+        <input type="password" id="passphrase" class="input" placeholder="イベントを後で編集・削除するための合言葉">
+        <p class="input-hint">グループメンバーに共有するとイベントの管理（削除）ができます。忘れないように控えてください。</p>
+      </div>
+
+    </div>
+
+    <button id="submit-btn" class="btn btn-primary btn-block" onclick="submitCreate()">
+      イベントを作成する
+    </button>
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="http.js"></script>
+  <script src="create.js"></script>
+</body>
+</html>

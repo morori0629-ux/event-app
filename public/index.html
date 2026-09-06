@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#4f46e5">
+  <title>イベント管理</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="header">
+    <h1 class="header-title">📅 イベント管理</h1>
+    <button class="btn-header-create" onclick="location.href='create.html'">＋ 作成</button>
+  </header>
+
+  <main class="container">
+    <!-- ローディング -->
+    <div id="loading" class="loading"></div>
+
+    <!-- イベント一覧 -->
+    <div id="event-list" class="hidden"></div>
+
+    <!-- 空状態 -->
+    <div id="empty" class="empty hidden">
+      <div class="empty-icon">🗓️</div>
+      <p>まだイベントがありません</p>
+      <button class="btn btn-primary" onclick="location.href='create.html'">
+        最初のイベントを作成する
+      </button>
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="http.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "event-manager",
+  "version": "1.0.0",
+  "description": "グループイベント管理Webアプリ",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.8"
+  }
+}
